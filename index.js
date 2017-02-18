@@ -13,6 +13,7 @@ import {
   StyleSheet,
   Text,
   View,
+  TouchableOpacity,
 } from 'react-native';
 
 const SwipeoutBtn = React.createClass({
@@ -102,6 +103,7 @@ const Swipeout = React.createClass({
     left: PropTypes.array,
     onOpen: PropTypes.func,
     onClose: PropTypes.func,
+    onPress: PropTypes.func,
     right: PropTypes.array,
     scroll: PropTypes.func,
     style: View.propTypes.style,
@@ -308,16 +310,17 @@ const Swipeout = React.createClass({
 
     return (
       <View style={styleSwipeout}>
-        <View
+        <TouchableOpacity
           ref="swipeoutContent"
           style={styleContent}
           onLayout={this._onLayout}
           {...this._panResponder.panHandlers}
           onStartShouldSetResponderCapture={() => (this.state.openedLeft || this.state.openedRight)}
           onMoveShouldSetResponderCapture={() => true}
+          onPress={ this.props.onPress }
         >
           {this.props.children}
-        </View>
+        </TouchableOpacity>
         { this._renderButtons(this.props.right, isRightVisible, styleRight) }
         { this._renderButtons(this.props.left, isLeftVisible, styleLeft) }
       </View>
