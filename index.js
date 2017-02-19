@@ -309,21 +309,22 @@ const Swipeout = React.createClass({
     var isLeftVisible = posX > 0;
 
     return (
-      <View style={styleSwipeout}>
-        <TouchableOpacity
-          ref="swipeoutContent"
-          style={styleContent}
-          onLayout={this._onLayout}
-          {...this._panResponder.panHandlers}
-          onStartShouldSetResponderCapture={() => (this.state.openedLeft || this.state.openedRight)}
-          onMoveShouldSetResponderCapture={() => true}
-          onPress={ this.props.onPress }
-        >
-          {this.props.children}
-        </TouchableOpacity>
-        { this._renderButtons(this.props.right, isRightVisible, styleRight) }
-        { this._renderButtons(this.props.left, isLeftVisible, styleLeft) }
-      </View>
+      <TouchableHighlight style={styleSwipeout} onPress={ this.props.onPress }>
+        <View>
+          <View
+            ref="swipeoutContent"
+            style={styleContent}
+            onLayout={this._onLayout}
+            {...this._panResponder.panHandlers}
+            onStartShouldSetResponderCapture={() => (this.state.openedLeft || this.state.openedRight)}
+            onMoveShouldSetResponderCapture={() => true}
+          >
+            {this.props.children}
+          </View>
+          { this._renderButtons(this.props.right, isRightVisible, styleRight) }
+          { this._renderButtons(this.props.left, isLeftVisible, styleLeft) }
+        </View>
+      </TouchableHighlight>
     );
   },
 
