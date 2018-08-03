@@ -20,13 +20,16 @@
     "ui"
   ],
   "author": "Dan Cormier",
-  "maintainers": ["silentcloud"],
+  "maintainers": [
+    "silentcloud"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/silentcloud/react-native-swipeout/issues"
   },
   "homepage": "https://github.com/silentcloud/react-native-swipeout",
   "dependencies": {
+    "prop-types": "^15.6.1",
     "react-tween-state": "^0.1.5"
   }
 }
